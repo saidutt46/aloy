@@ -1,0 +1,44 @@
+.header {
+  width: 100%;
+  height: 100%;
+  background-color: #262626;
+  position: absolute;
+}
+
+particles {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.title-area {
+  color: rgb(255, 255, 255);
+  position: absolute;
+  width: auto;
+  height: auto;
+  top: 10%;
+  left: 5%;
+  padding: 20px;
+}
+
+.title-area  h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 9.8rem;
+  font-weight: 300 !important;
+}
+
+.title-area h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 300 !important;
+  letter-spacing: .5rem;
+  color: #95E837;
+}
+
+p {
+  position: absolute;
+  color: darkgray;
+  right: 0;
+  bottom: 0;
+  font-size: .8rem;
+}

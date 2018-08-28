@@ -1,0 +1,44 @@
+.header {
+  width: 20em;
+  height: 30em;
+  background-color: #fffdfd;
+  padding: 1em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: .4em;
+  box-shadow: 0 0 10px gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+form {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.login-heading {
+  border: none;
+  color: #95E837;
+  font-weight: 200;
+}
+
+button {
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.ack {
+  position: absolute;
+  font-size: 10px;
+  color: lightgray;
+  left: 50%;
+  transform: translate(-50%);
+  bottom: 0;
+  text-align: center;
+}

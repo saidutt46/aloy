@@ -1,0 +1,18 @@
+app-navbar {
+  position: relative;
+  height: 5%;
+}
+
+.magic-here {
+  position: relative;
+  height: 95%;
+  top: 5%;
+}
+
+flash-messages {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
+}
+

@@ -1,0 +1,23 @@
+nav {
+  background: #262626 !important;
+  z-index: 1000;
+}
+
+li {
+  color: white;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.nav-item a:hover {
+  color: #95E837;
+}
+
+.nav-item a:active {
+  color: #95E837;
+}
+

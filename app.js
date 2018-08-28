@@ -36,7 +36,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 //Static foler -FREND
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', users);
 
