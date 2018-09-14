@@ -4,6 +4,8 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
+const spotifyWebApi = require('spotify-web-api-node');
+const credentials = require('../creds/spotify');
 
 // const User = require('../models/user');
 
@@ -65,6 +67,31 @@ router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res
     res.json({user: req.user});
 });
 
+// spotify web api and app realted stuff goes here
+
+
+router.get('/getalbums', (req, res, query) => {
+    spotifyApi.searchArtists('Drake')
+        .then((data) => {
+            console.log('Albums Information', data.body);
+            res.send(data.body);
+        }, (err) => {
+            console.log(err);
+        });
+});
+
+var spotifyApi = new spotifyWebApi({
+    clientId: credentials.clientId,
+    clientSecret: credentials.clientSecret
+})
+
+spotifyApi.clientCredentialsGrant()
+  .then((data) => {
+    console.log('The access token is' + data.body['access_token']);
+    spotifyApi.setAccessToken(data.body['access_token']);
+  }, (err) => {
+    console.log('Something went wrong!', err);
+});
 
 
 module.exports = router;

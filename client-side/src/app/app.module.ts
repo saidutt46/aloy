@@ -20,6 +20,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { ParticlesModule } from 'angular-particle';
 import { AuthGuardService } from '../_guards/auth-guard.service';
+import { SpotifyHomeComponent } from './components/spotify-home/spotify-home.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { AuthGuardService } from '../_guards/auth-guard.service';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    DashboardComponent
+    DashboardComponent,
+    SpotifyHomeComponent
   ],
   imports: [
     BrowserModule,
