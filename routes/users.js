@@ -71,7 +71,7 @@ router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res
 
 
 router.get('/getalbums', (req, res, query) => {
-    spotifyApi.searchArtists('Drake')
+    spotifyApi.searchArtists(req)
         .then((data) => {
             console.log('Albums Information', data.body);
             res.send(data.body);
@@ -79,6 +79,17 @@ router.get('/getalbums', (req, res, query) => {
             console.log(err);
         });
 });
+
+router.get('/getArtist', (req, res) => {
+    spotifyApi.getArtist(req)
+        .then((data) => {
+            res.send(data.body);
+            console.log(data.body);
+        }, (err) => {
+            console.log(err);
+            res.send(err);
+        });
+})
 
 var spotifyApi = new spotifyWebApi({
     clientId: credentials.clientId,

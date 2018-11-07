@@ -1,21 +1,25 @@
-<div class="header">
-  <h1 class="login-heading">Login</h1>
-    <form (submit)="loginForm.valid" [formGroup]="loginForm">
-          <mat-form-field>
-            <input id="username" matInput [(ngModel)]="user.username" formControlName="username" placeholder="username">
-          </mat-form-field>
-          <mat-form-field>
-            <input id="password" matInput [(ngModel)]="user.password" formControlName="password"
-            [type]="hide ? 'password':'text'"
-            placeholder="password">
-           <mat-icon matSuffix (click)="hide = !hide" >
-              {{hide ? 'visibility' : 'visibility_off'}}
-           </mat-icon>
-          </mat-form-field>
-    </form>
-    <button mat-raised-button color="primary" [disabled]="!loginForm.valid" type="submit" (click)="onLoginSubmit()">Login</button>
+<mat-card class="header">
+  <mat-card-content fxLayoutAlign="center" fxLayout="column">
+      <h1 fxLayoutAlign="center" class="login-heading">Login</h1>
+      <form fxLayout="column" (submit)="loginForm.valid" [formGroup]="loginForm">
+            <mat-form-field>
+              <input id="username" matInput [(ngModel)]="user.username" formControlName="username" placeholder="username">
+            </mat-form-field>
+            <mat-form-field>
+              <input id="password" matInput [(ngModel)]="user.password" formControlName="password"
+              [type]="hide ? 'password':'text'"
+              placeholder="password">
+             <mat-icon matSuffix (click)="hide = !hide" >
+                {{hide ? 'visibility' : 'visibility_off'}}
+             </mat-icon>
+            </mat-form-field>
+      </form>
+  </mat-card-content>
+  <mat-card-actions fxLayoutAlign="center">
+      <button mat-raised-button color="primary" [disabled]="!loginForm.valid" type="submit" (click)="onLoginSubmit()">Login</button>
+  </mat-card-actions>
     <p>Don't Have an Account? please <a [routerLink]="['/register']">Register</a></p>
     <p class="ack">
       Please complete all the fields in order to Log In
     </p>
-  </div>
+  </mat-card>

@@ -54,9 +54,9 @@ export class AuthService {
     this.authToken = token;
   }
 
-  getArtistTracks(query) {
-    return this.http.get(`http://localhost:3300/users/getalbums/${query}`);
-  }
+  // getArtistTracks(query) {
+  //   return this.http.get(`http://localhost:3300/users/getalbums/${query}`);
+  // }
 
   logout() {
     this.authToken = null;

@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { UserReg } from '../../../_modles/user-registration';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { ValidateService } from '../../../_services/validate.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../_services/auth.service';
 import { Router } from '@angular/router';
-import { FlashMessagesService } from 'angular2-flash-messages';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { MatDialog } from '@angular/material';
+import { map } from 'rxjs/operators';
+import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
   selector: 'app-navbar',
@@ -16,23 +14,18 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class NavbarComponent implements OnInit {
 
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+        .pipe(map(result => result.matches));
+
   constructor(
     public authService: AuthService,
     private router: Router,
-    private flashMessage: FlashMessagesService
+    private breakpointObserver: BreakpointObserver,
+    public dialog: MatDialog
   ) {
   }
 
   ngOnInit() {
-  }
-
-  onLogout() {
-    this.authService.logout();
-    this.flashMessage.show('You have Logged Out', {
-      cssClass: 'alert-success',
-      timeout: 3000
-    });
-    this.router.navigate(['/']);
   }
 
   isLoggedIn() {
@@ -42,6 +35,16 @@ export class NavbarComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  openUserProfile() {
+    this.dialog.open(ProfileComponent, {
+      width: '300px',
+      autoFocus: false,
+      position: {
+        right: '20px', top: '50px'
+      }
+    });
   }
 
 }

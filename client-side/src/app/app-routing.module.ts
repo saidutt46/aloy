@@ -2,12 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Components
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { RegisterComponent } from './components/register/register.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SpotifyHomeComponent } from './components/spotify-home/spotify-home.component';
+import { HomeComponent, LoginComponent, RegisterComponent, DashboardComponent,
+  NavbarComponent, ProfileComponent } from './components/index';
 import { AuthGuardService as AuthGuard } from '../_guards/auth-guard.service';
 
 
@@ -16,8 +12,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  {path: 'spotify-home', component: SpotifyHomeComponent, canActivate: [AuthGuard] }
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

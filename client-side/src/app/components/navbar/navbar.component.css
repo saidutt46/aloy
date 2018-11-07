@@ -1,23 +1,25 @@
-nav {
-  background: #262626 !important;
-  z-index: 1000;
+.sidenav-container {
+  height: 100%;
 }
 
-li {
-  color: white;
-  cursor: pointer;
+.sidenav {
+  width: 200px;
 }
 
-a {
-  text-decoration: none;
-  color: white;
+.mat-toolbar {
+    height: 46px;
 }
 
-.nav-item a:hover {
-  color: #95E837;
+mat-sidenav.sidebar-panel {
+    width: 10rem;
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 1px 3px 0 rgba(0,0,0,.12)!important;
 }
 
-.nav-item a:active {
-  color: #95E837;
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
 }
 
+.cr-brand {
+  font-weight: 200;
+}

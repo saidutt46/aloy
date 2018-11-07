@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { UserReg } from '../../../_modles/user-registration';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ValidateService } from '../../../_services/validate.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../../_services/auth.service';
 import { Router } from '@angular/router';
-import { FlashMessagesService } from 'angular2-flash-messages';
-
+import { MatSnackBar } from '@angular/material';
+import { INotificationService, NOTIFICATION_SERV_TOKEN } from '../../../_services/notification.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private flashMessage: FlashMessagesService
+    @Inject(NOTIFICATION_SERV_TOKEN) private notifier: INotificationService
   ) { }
 
   ngOnInit() {
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
       ]],
       'password': [this.user.password, [
         Validators.required,
-        Validators.minLength(5),
+        Validators.minLength(4),
         Validators.maxLength(30)
       ]]
     });
@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
   onRegisterSubmit() {
     this.authService.registerUser(this.registerForm.value).subscribe(data => {
       if (data) {
-        this.flashMessage.show('Succesfully Registered!', {cssClass: 'alert-success', timeout: 3000});
+        this.notifier.pop('Registered Successfully!', undefined);
         this.router.navigate(['/login']);
       } else {
         this.router.navigate(['/register']);

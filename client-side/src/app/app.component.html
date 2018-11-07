@@ -1,5 +1,8 @@
-<app-navbar></app-navbar>
-<!-- <div class="magic-here"> -->
-  <flash-messages></flash-messages>
-  <router-outlet></router-outlet>
-<!-- </div> -->
+<app-navbar>
+    <section fxLayout="row" fxFlexFill fxLayoutAlign="start start">
+        <article fxFlex="4 1 auto" fxFlexFill>
+            <router-outlet></router-outlet>
+        </article>
+        <!-- <aside #aside fxFlex="1 1 auto">This is some text for testing</aside> -->
+      </section>
+</app-navbar>

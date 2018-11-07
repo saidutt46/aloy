@@ -1,22 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">ALOY</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarContent">
-    <ul class="nav navbar-nav ml-auto navbar-right">
-      <li *ngIf="!isLoggedIn()"
-      [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"  class="nav-item"><a class="nav-link" [routerLink]="['/']" >Home</a></li>
-      <li  *ngIf="isLoggedIn()"
-       [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"  class="nav-item"><a class="nav-link" [routerLink]="['/login']" >Login</a></li>
-      <li  *ngIf="isLoggedIn()"
-      [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"  class="nav-item"><a class="nav-link" [routerLink]="['/register']" >Register</a></li>
-      <li *ngIf="!isLoggedIn()"
-      [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"  class="nav-item"><a class="nav-link" [routerLink]="['/dashboard']" >Dashboard</a></li>
-      <li *ngIf="!isLoggedIn()"
-      [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}"  class="nav-item"><a class="nav-link" [routerLink]="['/profile']" >Profile</a></li>
-      <li  *ngIf="!isLoggedIn()"
-       class="nav-item"><a class="nav-link" href="#" (click)="onLogout()">Logout</a></li>
-    </ul>
-  </div>
-</nav>
+<mat-toolbar color="primary" fxLayout="row">
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <div fxFlex></div>
+    <button *ngIf="!isLoggedIn()" fxFlex="0 0 auto" id="profileOpen" (click)="openUserProfile()" mat-icon-button matTooltip="User Profile">
+        <mat-icon>person</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidebar-panel" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'">
+        <mat-nav-list>
+          <a *ngIf="!isLoggedIn()"
+      [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" mat-list-item routerLink="/">Home</a>
+          <a *ngIf="isLoggedIn()"
+      [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" mat-list-item routerLink="/login">Login</a>
+          <a *ngIf="isLoggedIn()"
+      [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" mat-list-item routerLink="/register">Register</a>
+          <a *ngIf="!isLoggedIn()"
+      [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" mat-list-item routerLink="/dashboard">Dashboard</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="height: 100%">
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>
